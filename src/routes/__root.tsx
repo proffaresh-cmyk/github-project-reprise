@@ -37,7 +37,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
-    if (error?.message?.includes("UNAUTHORIZED")) {
+    if ((error as Error | undefined)?.message?.includes("UNAUTHORIZED")) {
       router.navigate({ to: "/login" });
       return;
     }
